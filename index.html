@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Figuras</title>
+    </head>
+    <body>
+        <h1>Figuras</h1>
+        <main role="main" class="col-12 row">
+            <article>
+                <form action="datos_figuras.php" method="get">
+                    <label for="tipo">Tipo de figura: </label>
+                    <select id="tipo" name="tipo" onchange="cambiarDatos(this.value);">
+                        <option value="r" selected>Rectángulo</option>
+                        <option value="c">Círculo</option>
+                        <option value="u">Cuadrado</option>
+                    </select>
+                    <div id="datos">
+                        <label for="base">Base del rectángulo: </label>
+                        <input type="number" name="base" value="5"><br>
+                        <label for="altura">Altura del rectángulo: </label>
+                        <input type="number" name="altura" value="4"><br>
+                    </div>
+                    <input type="submit" value="Calcular datos">
+                </form>
+            </article>
+        </main>
+        <footer class="col-12 text-muted">
+            <p>Este es un ejercicio para Programación 1 (DS)</p>
+        </footer>
+<script>
+document.onLoad = document.querySelector('form').reset() ;
+
+function cambiarDatos(valor)
+{
+    // Vaciamos el div:
+    var d = document.querySelector('#datos');
+    d.innerHTML = "";
+
+    //Lo completamos con los valores que correspondan:
+    if (valor == "r") {
+        var l1 = document.createElement('label');
+        l1.setAttribute("for", "base");
+        l1.innerHTML = "Base del rectángulo";
+        var i1 = document.createElement('input');
+        i1.type = "number";
+        i1.name = "base";
+
+        var l2 = document.createElement('label');
+        l2.setAttribute("for", "altura");
+        l2.innerHTML = "Altura del rectángulo";
+        var i2 = document.createElement('input');
+        i2.type = "number";
+        i2.name = "altura";
+
+        d.appendChild(l1);
+        d.appendChild(i1);
+        d.appendChild(document.createElement('br'));
+        d.appendChild(l2);
+        d.appendChild(i2);
+        
+    } else if (valor == "u") {
+        var l = document.createElement('label');
+        l.setAttribute("for", "lado");
+        l.innerHTML = "Lado del cuadrado";
+        var i = document.createElement('input');
+        i.type = "number";
+        i.name = "lado";
+
+        d.appendChild(l);
+        d.appendChild(i);
+    } else {
+        var l = document.createElement('label');
+        l.setAttribute("for", "radio");
+        l.innerHTML = "Radio del círculo";
+        var i = document.createElement('input');
+        i.type = "number";
+        i.name = "radio";
+
+        d.appendChild(l);
+        d.appendChild(i);
+    }
+}
+</script>
+    </body>
+</html>
